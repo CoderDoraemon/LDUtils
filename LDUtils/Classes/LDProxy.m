@@ -23,7 +23,7 @@
 }
 // 直接调用
 - (void)forwardInvocation:(NSInvocation *)invocation {
-    [invocation invokeWithTarget:self];
+    [invocation invokeWithTarget:self.target];
 }
 
 @end

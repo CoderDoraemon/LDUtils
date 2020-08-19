@@ -7,8 +7,17 @@
 //
 
 #import "LDViewController.h"
+#import <LDUtils/LDUtils.h>
 
 @interface LDViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
+
+@property (copy, nonatomic) NSString *timerName;
+
+@property (assign, nonatomic) NSInteger number;
+
+@property (strong, nonatomic) LDPermenantThread *thread;
 
 @end
 
@@ -17,13 +26,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)startTimer {
+    
+    [self cancelTimer];
+    
+    NSString *timerName = [LDTimer executeTask:^{
+        self.number++;
+        self.tipLabel.text = [NSString stringWithFormat:@"%ld", (long)self.number];
+    } start:0 interval:1 repeats:YES async:NO];
+    
+    self.timerName = timerName;
 }
+
+
+- (IBAction)cancelTimer {
+    
+    [LDTimer cancelTask:self.timerName];
+    self.tipLabel.text = nil;
+    self.number = 0;
+}
+
+
+
 
 @end

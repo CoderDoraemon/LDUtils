@@ -22,7 +22,7 @@ static dispatch_semaphore_t semaphore_;
 }
 
 
-+ (NSString *)excelTask:(void(^)(void))task start:(NSTimeInterval)start interval:(NSTimeInterval)interval repeats:(BOOL)repeats async:(BOOL)async {
++ (NSString *)executeTask:(void(^)(void))task start:(NSTimeInterval)start interval:(NSTimeInterval)interval repeats:(BOOL)repeats async:(BOOL)async {
     
     if (!task || start < 0 || (interval <= 0 && repeats)) return nil;
     // 创建队列
@@ -50,11 +50,11 @@ static dispatch_semaphore_t semaphore_;
     return identify;
 }
 
-+ (NSString *)excelTarget:(id)target selector:(SEL)selector start:(NSTimeInterval)start interval:(NSTimeInterval)interval repeats:(BOOL)repeats async:(BOOL)async {
++ (NSString *)executeTarget:(id)target selector:(SEL)selector start:(NSTimeInterval)start interval:(NSTimeInterval)interval repeats:(BOOL)repeats async:(BOOL)async {
     
     if (!target || !selector) return nil;
     
-    return [self excelTask:^{
+    return [self executeTask:^{
         
         if ([target respondsToSelector:selector]) {
             #pragma clang diagnostic push
