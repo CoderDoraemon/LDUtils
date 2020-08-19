@@ -1,0 +1,16 @@
+PODS:
+  - LDUtils (0.0.1)
+
+DEPENDENCIES:
+  - LDUtils (from `../`)
+
+EXTERNAL SOURCES:
+  LDUtils:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LDUtils: d451911a4b8a7720d49e1a1e73cf48cfa441b573
+
+PODFILE CHECKSUM: 519eb48028d6c5587f495ae648b4d626adef50e2
+
+COCOAPODS: 1.9.1
