@@ -62,6 +62,7 @@
                 
             }];
         } else {
+            
             self.thread = [[LDThread alloc] initWithTarget:self selector:@selector(doRunLoop) object:nil];
         }
     }

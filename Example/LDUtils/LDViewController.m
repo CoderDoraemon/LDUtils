@@ -8,6 +8,11 @@
 
 #import "LDViewController.h"
 #import <LDUtils/LDUtils.h>
+#import "LDBaseDemo.h"
+#import "LDOSSpinLockDemo.h"
+#import "LDOSUnfairLockDemo.h"
+#import "LDPThreadMutexDemo.h"
+#import "LDPThreadMutexConditionDemo.h"
 
 @interface LDViewController ()
 
@@ -26,6 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    LDPThreadMutexConditionDemo *demo = [[LDPThreadMutexConditionDemo alloc] init];
+    [demo testCondition];
 }
 
 - (IBAction)startTimer {
@@ -47,8 +55,6 @@
     self.tipLabel.text = nil;
     self.number = 0;
 }
-
-
 
 
 @end
